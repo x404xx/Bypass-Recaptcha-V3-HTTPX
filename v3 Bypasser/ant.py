@@ -20,8 +20,8 @@ def testV3(proxy:str, aURL:str):
             'g-recaptcha-reponse': googRecap(proxy, aURL),
         }
 
-        print(f"{(resp:=session.post('https://ar1n.xyz/recaptcha3ScoreTest', json=json_data, timeout=10).text)}\n")
-        return resp
+        print(resp:=session.post('https://ar1n.xyz/recaptcha3ScoreTest', json=json_data, timeout=10).text)
+
 
 if __name__ == '__main__':
     testV3(None, 'https://www.google.com/recaptcha/api2/anchor?ar=1&k=6LcR_okUAAAAAPYrPe-HK_0RULO1aZM15ENyM-Mf&co=aHR0cHM6Ly9hbnRjcHQuY29tOjQ0Mw..&hl=en&v=Km9gKuG06He-isPsP6saG8cn&size=invisible&cb=a035ydmpd1ys')
