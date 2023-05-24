@@ -11,7 +11,7 @@ def googRecap(proxy:str, aURL:str):
 
         #! Rebuild URL
         bURL = 'https://www.google.com/recaptcha/'
-        bURL += (matches := re.findall(r'([api2|enterprise]+)\/anchor\?(.*)', url)[0])[0]
+        bURL += (matches := re.findall(r'([api2|enterprise]+)\/anchor\?(.*)', aURL)[0])[0]
 
         #! Requests Token from Anchor URL
         resp = session.get(f'{bURL}/anchor',headers=headers, params=(param := matches[1]), timeout=10)
