@@ -1,9 +1,10 @@
 import re
+
 from httpx import Client
 from user_agent import generate_user_agent as gua
 
 
-def googRecap(proxy:str, aURL:str):
+def google_recaptcha(anchor_url: str, proxy: str=None):
     with Client(http2=True, proxies=proxy) as session:
 
         #! Set Headers
@@ -11,7 +12,7 @@ def googRecap(proxy:str, aURL:str):
 
         #! Rebuild URL
         bURL = 'https://www.google.com/recaptcha/'
-        bURL += (matches := re.findall(r'([api2|enterprise]+)\/anchor\?(.*)', aURL)[0])[0]
+        bURL += (matches := re.findall(r'([api2|enterprise]+)\/anchor\?(.*)', anchor_url)[0])[0]
 
         #! Requests Token from Anchor URL
         resp = session.get(f'{bURL}/anchor', params=(param := matches[1]), timeout=10)
