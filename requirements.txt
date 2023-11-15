@@ -1,2 +1,2 @@
-httpx[http2]==0.24.1
+httpx[http2]==0.25.1
 user_agent==0.1.10
